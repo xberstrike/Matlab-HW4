@@ -1,0 +1,18 @@
+x_old = 100;
+while(abs(x_old - x0) > tol)
+  x_old = x0;
+  x0 = x0 - f(x0)/fprime(x0);
+end  
+
+root = x0;
+  
+functin root = newton(f, fprime, x0, tol)
+  error = 1;
+  while(error > tol)
+    x_old = x0;
+    x0 = x0 - fprime(x0)/f(x0);
+    error = norm(x0 - x_old)/norm(x0);
+  end
+  root = t;
+end
+ 
