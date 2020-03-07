@@ -1,0 +1,32 @@
+function result = trap(f, a, b, n)
+  h = (b-a)/n;
+  x = [a+h:h:b-h];
+  result = h/2*(2*sum(feval(f,x))+feval(f,a)+feval(f,b));
+end
+
+%testing
+function y = f(x)
+  y = sin(x)+cos(x);
+end
+
+
+%simp function definition
+function result = simp(f, a, b, n)
+  h = (b-a)/n;
+  
+  x0 = feval('f',a)+feval('f', b);
+  x1 = 0;
+  x2 = 0;
+  
+  for itr = 1:n-1
+    x = a+itr*h;
+    if mod(itr,2) == 0
+      x2 = x2 + feval('f',x);
+    else 
+      x1 = x1 + feval('f',x);
+  end
+end
+
+%finding the result
+result = h*(x0+2*x2+4*x1)/3;
+
