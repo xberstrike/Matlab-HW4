@@ -1,0 +1,12 @@
+function root = newton(f,fprime,x0,to1)
+  if(abs(f(x0)) < = to1)
+    root = x0;
+    return;
+  else
+    while(abs(f(x0)) > to1)
+      xnew = x0 = (f(x0)/fprime(x0));
+      x0 = xnew;
+    end
+    root = x0;
+  end
+end
