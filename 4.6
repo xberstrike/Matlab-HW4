@@ -1,0 +1,13 @@
+disp('4.6')
+fprintf('\n')
+F = 10000:5000:40000;
+t = 30;
+P = 200;
+syms r 
+R = zeros(size(F));
+for k = 1:length(F)
+  s = vpasolve(F(k) == P*((1+r)^t-1)/(r),r,0);
+  real_s = s(abs(imag(s)) < 1e^-9);
+  R(k) = real_s;
+  syms r
+end
