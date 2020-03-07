@@ -1,0 +1,17 @@
+disp('4.3')
+function m = bisect(f, a, b, to1)
+  
+  m = (a + b)/2;
+  k = (b-a);
+  
+  while(k > 2*to1)
+    if(f(a)*f(m) < 0)
+      b = m;
+    else 
+      a = m;
+     end
+  
+    m = (a + b)/2;
+    k = (b - a);
+  end
+end
